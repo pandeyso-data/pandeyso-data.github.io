@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sonal Pandey</title>
+<meta name="description" content="Sonal Pandey — Senior Member Technical at Broadridge Financial Solutions. ~7 years in enterprise fintech: batch and database processing, data validation, and reporting flows. Growing into data analytics and data engineering." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" />
+<style>
+  /* ---- Tokens: light ---- */
+  :root {
+    --bg:        #f7f8f9;
+    --surface:   #ffffff;
+    --surface-2: #f0f3f4;
+    --ink:       #18222c;
+    --ink-soft:  #3c4855;
+    --muted:     #667380;
+    --line:      #e2e6e9;
+    --accent:    #0e6f6b;
+    --accent-strong: #0a5350;
+    --accent-soft: #e0efed;
+    --focus:     #0e6f6b;
+
+    --maxw: 1040px;
+    --readw: 66ch;
+    --step-0: 1rem;
+    --step-1: 1.15rem;
+    --step-2: 1.4rem;
+    --step-3: 1.9rem;
+    --step-4: clamp(2.1rem, 5vw, 3rem);
+    --radius: 10px;
+  }
+  /* ---- Tokens: dark (system, unless explicitly light) ---- */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:        #0d1417;
+      --surface:   #131c20;
+      --surface-2: #18242a;
+      --ink:       #e8edef;
+      --ink-soft:  #c2ccd0;
+      --muted:     #8fa0a6;
+      --line:      #263139;
+      --accent:    #51b6ac;
+      --accent-strong: #6fc9c0;
+      --accent-soft: #16302e;
+      --focus:     #51b6ac;
+    }
+  }
+  /* ---- Tokens: dark (explicit) ---- */
+  :root[data-theme="dark"] {
+    --bg:        #0d1417;
+    --surface:   #131c20;
+    --surface-2: #18242a;
+    --ink:       #e8edef;
+    --ink-soft:  #c2ccd0;
+    --muted:     #8fa0a6;
+    --line:      #263139;
+    --accent:    #51b6ac;
+    --accent-strong: #6fc9c0;
+    --accent-soft: #16302e;
+    --focus:     #51b6ac;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: var(--step-0);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--accent-strong); }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  h1, h2, h3 {
+    font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    line-height: 1.2;
+    text-wrap: balance;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 44px); }
+
+  /* ---- Nav ---- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 12px clamp(20px, 5vw, 44px);
+    display: flex; align-items: center; gap: 18px;
+  }
+  .nav-name {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-weight: 600; font-size: 1rem; letter-spacing: .2px;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex; gap: 2px; margin-left: auto;
+    overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    color: var(--ink-soft); text-decoration: none;
+    font-size: .9rem; padding: 6px 10px; border-radius: 7px;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--ink); background: var(--surface-2); }
+  .theme-btn {
+    flex-shrink: 0;
+    background: var(--surface); color: var(--ink-soft);
+    border: 1px solid var(--line); border-radius: 7px;
+    width: 32px; height: 32px; cursor: pointer;
+    display: grid; place-items: center; font-size: 15px; line-height: 1;
+  }
+  .theme-btn:hover { color: var(--ink); border-color: var(--muted); }
+
+  /* ---- Sections ---- */
+  section { padding: clamp(56px, 9vw, 96px) 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: 0; }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .74rem; font-weight: 500;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: ""; width: 26px; height: 1px; background: var(--accent); flex-shrink: 0;
+  }
+
+  .lede { font-size: var(--step-1); color: var(--ink-soft); max-width: var(--readw); }
+  p { max-width: var(--readw); }
+  .prose p + p { margin-top: 1.1em; }
+
+  /* ---- Hero ---- */
+  .hero { padding-top: clamp(60px, 11vw, 120px); }
+  .hero-eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .82rem; letter-spacing: .04em;
+    color: var(--muted); margin-bottom: 20px;
+  }
+  .hero h1 { font-size: var(--step-4); letter-spacing: -0.5px; }
+  .hero-statement {
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 42ch;
+    margin-top: 24px;
+  }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: 8px;
+    font-size: .95rem; font-weight: 500; text-decoration: none;
+    border: 1px solid var(--line); color: var(--ink); background: var(--surface);
+  }
+  .btn:hover { border-color: var(--muted); color: var(--ink); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  :root[data-theme="dark"] .btn-primary,
+  .btn-primary { color: #fff; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .btn-primary { color: #06201e; }
+  }
+  :root[data-theme="dark"] .btn-primary { color: #06201e; }
+  .btn-primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+
+  /* ---- At a glance ---- */
+  .glance {
+    margin-top: 40px; padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: grid; gap: 14px 28px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    max-width: 760px;
+  }
+  .glance div { display: flex; flex-direction: column; gap: 2px; }
+  .glance dt {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .glance dd { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+
+  /* ---- Experience ---- */
+  .role-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+  .role-head h3 { font-size: var(--step-2); }
+  .role-meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .82rem; color: var(--muted);
+  }
+  .duties { margin: 22px 0 0; padding: 0; list-style: none; max-width: var(--readw); }
+  .duties li {
+    position: relative; padding-left: 22px; margin-top: 12px; color: var(--ink-soft);
+  }
+  .duties li::before {
+    content: ""; position: absolute; left: 2px; top: .68em;
+    width: 7px; height: 7px; border: 1px solid var(--accent); border-radius: 2px;
+  }
+
+  /* ---- Pipeline timeline ---- */
+  .flow { margin-top: 8px; list-style: none; padding: 0; counter-reset: step; }
+  .flow li {
+    position: relative;
+    padding: 0 0 26px 46px;
+    border-left: 1px solid var(--line);
+    margin-left: 15px;
+  }
+  .flow li:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .flow li::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    position: absolute; left: -15px; top: -2px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--line);
+    display: grid; place-items: center;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .72rem; color: var(--accent);
+  }
+  .flow .stage {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .92rem; font-weight: 500; color: var(--ink);
+    letter-spacing: .01em;
+  }
+  .flow .stage-desc { margin: 3px 0 0; color: var(--muted); font-size: .92rem; max-width: 54ch; }
+  .flow-note {
+    margin-top: 26px; padding: 16px 18px;
+    background: var(--accent-soft); border-radius: var(--radius);
+    color: var(--ink-soft); font-size: .93rem; max-width: 60ch;
+  }
+
+  /* ---- Skills ---- */
+  .skill-groups { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .skill-group h3 {
+    font-family: "IBM Plex Sans", sans-serif; font-weight: 600;
+    font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span {
+    font-size: .88rem; padding: 5px 11px; border-radius: 7px;
+    background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft);
+  }
+  .skill-group.developing h3 { color: var(--accent); }
+  .skill-group.developing .tags span { background: var(--accent-soft); border-color: transparent; color: var(--ink-soft); }
+
+  /* ---- AI literacy ---- */
+  .ai-grid {
+    margin-top: 6px; display: grid; gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  .ai-grid div { background: var(--surface); padding: 20px 22px; }
+  .ai-grid h3 {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .8rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px; font-weight: 500;
+  }
+  .ai-grid p { margin: 0; color: var(--ink-soft); font-size: .92rem; }
+  .ai-foot { margin-top: 22px; color: var(--muted); font-size: .92rem; }
+
+  /* ---- Projects ---- */
+  .proj-note { color: var(--muted); font-size: .92rem; margin-bottom: 22px; }
+  .projects { display: flex; flex-direction: column; }
+  .projects a.project {
+    display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 6px 20px;
+    padding: 22px 0; border-top: 1px solid var(--line);
+    text-decoration: none; color: var(--ink);
+  }
+  .projects a.project:last-child { border-bottom: 1px solid var(--line); }
+  .projects a.project:hover .project-name { color: var(--accent); }
+  .project-name {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 1rem; font-weight: 500;
+  }
+  .project-desc { grid-column: 1 / -1; color: var(--muted); font-size: .93rem; max-width: 58ch; }
+  .project-arrow { color: var(--muted); font-size: .85rem; font-family: "IBM Plex Mono", monospace; white-space: nowrap; }
+
+  /* ---- Learning ---- */
+  .learn { margin-top: 6px; list-style: none; padding: 0; display: grid; gap: 14px; }
+  .learn li { padding-left: 22px; position: relative; color: var(--ink-soft); max-width: var(--readw); }
+  .learn li::before {
+    content: "→"; position: absolute; left: 0; top: 0;
+    color: var(--accent); font-family: "IBM Plex Mono", monospace;
+  }
+  .learn b { color: var(--ink); font-weight: 600; }
+
+  /* ---- Contact ---- */
+  .contact-links { display: grid; gap: 2px; margin-top: 8px; max-width: 520px; }
+  .contact-links a {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 16px 0; border-bottom: 1px solid var(--line);
+    text-decoration: none; color: var(--ink); font-size: 1.02rem;
+  }
+  .contact-links a:hover { color: var(--accent); }
+  .contact-links .c-val {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .86rem; color: var(--muted); text-align: right;
+  }
+  .contact-links a:hover .c-val { color: var(--accent); }
+
+  footer {
+    padding: 40px 0 60px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .85rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  @media (max-width: 620px) {
+    .nav-name { font-size: .92rem; }
+    .contact-links a { flex-direction: column; gap: 2px; }
+    .contact-links .c-val { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-name">Sonal Pandey</span>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#flow">Workflow</a>
+      <a href="#skills">Skills</a>
+      <a href="#ai">AI Literacy</a>
+      <a href="#projects">Projects</a>
+      <a href="#learning">Learning</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">◐</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero wrap" id="top">
+    <p class="hero-eyebrow">Senior Member Technical · Broadridge Financial Solutions</p>
+    <h1>Sonal Pandey</h1>
+    <p class="hero-statement">
+      Seven years building and validating enterprise fintech systems —
+      configuration-driven batch processing, database workflows, and the data
+      checks that keep reporting trustworthy. Now going deeper into data
+      analytics and data engineering.
+    </p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn" href="https://github.com/pandeyso-data" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/pandeyso/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <section class="wrap" id="about">
+    <div class="eyebrow">About</div>
+    <div class="prose">
+      <p>
+        I work as a Senior Member Technical at Broadridge Financial Solutions, where
+        I have spent around seven years on enterprise implementation and the data
+        flows behind fintech operations. My work sits across configuration, scheduled
+        batch execution, database processing, and validation — making sure that what
+        a requirement asks for is what the system actually produces.
+      </p>
+      <p>
+        I think in pipelines. A change usually starts as a requirement, becomes YAML
+        or configuration, runs through batch jobs and database processing, gets
+        validated, and moves through Datamart and staging layers into downstream
+        processing and reporting. I am most useful in the middle of that chain:
+        setting things up correctly, checking the data at each handoff, and
+        troubleshooting when a run does not match expectations.
+      </p>
+      <p>
+        Lately I have been building on that foundation on purpose — strengthening SQL
+        and Python, learning data engineering concepts, ETL and pipeline design, and
+        Apache Spark, and getting practical with modern AI tools. A lot of this is
+        structured through the IISc Agentic AI program, where I am learning
+        spec-driven development: writing a clear specification before writing code.
+      </p>
+    </div>
+
+    <dl class="glance">
+      <div><dt>Experience</dt><dd>~7 years in enterprise fintech technology</dd></div>
+      <div><dt>Current role</dt><dd>Senior Member Technical, Broadridge Financial Solutions</dd></div>
+      <div><dt>Core focus</dt><dd>Data validation, batch &amp; database processing, Datamart / reporting</dd></div>
+      <div><dt>Growing into</dt><dd>Data analytics, data engineering, AI-assisted workflows</dd></div>
+      <div><dt>Learning through</dt><dd>IISc — Agentic AI program</dd></div>
+      <div><dt>Based in</dt><dd>India</dd></div>
+    </dl>
+  </section>
+
+  <section class="wrap" id="experience">
+    <div class="eyebrow">Experience</div>
+    <div class="role-head">
+      <h3>Broadridge Financial Solutions</h3>
+      <span class="role-meta">Senior Member Technical · ~7 years</span>
+    </div>
+    <ul class="duties">
+      <li>Implement and configure enterprise fintech workflows, working configuration-first with YAML and parameter-driven setup.</li>
+      <li>Run and monitor scheduled batch execution and database-driven processing across environments.</li>
+      <li>Validate data and process outcomes at each stage — completeness, consistency, and correctness — before data moves downstream.</li>
+      <li>Troubleshoot failures across the configuration, batch, and database layers, tracing issues to root cause.</li>
+      <li>Support Datamart, staging, and reporting flows that business stakeholders depend on.</li>
+      <li>Work with cross-functional teams through implementation and issue resolution.</li>
+    </ul>
+  </section>
+
+  <section class="wrap" id="flow">
+    <div class="eyebrow">How the work flows</div>
+    <p class="lede">A plain-English view of the pipeline my work runs across.</p>
+    <ol class="flow">
+      <li>
+        <div class="stage">Requirement</div>
+        <p class="stage-desc">What the business needs, stated clearly.</p>
+      </li>
+      <li>
+        <div class="stage">YAML / Configuration</div>
+        <p class="stage-desc">The requirement expressed as parameters the system reads.</p>
+      </li>
+      <li>
+        <div class="stage">Batch Execution</div>
+        <p class="stage-desc">Scheduled jobs run the work at volume.</p>
+      </li>
+      <li>
+        <div class="stage">Database Processing</div>
+        <p class="stage-desc">Data is transformed and stored through database logic.</p>
+      </li>
+      <li>
+        <div class="stage">Validation</div>
+        <p class="stage-desc">Checks confirm the output is complete, consistent, and correct.</p>
+      </li>
+      <li>
+        <div class="stage">Datamart / Staging</div>
+        <p class="stage-desc">Validated data lands in structured layers for wider use.</p>
+      </li>
+      <li>
+        <div class="stage">Downstream Processing</div>
+        <p class="stage-desc">Other processes consume that data.</p>
+      </li>
+      <li>
+        <div class="stage">Reporting</div>
+        <p class="stage-desc">Stakeholders see the results.</p>
+      </li>
+    </ol>
+    <p class="flow-note">
+      My contribution concentrates in configuration, execution, validation, and
+      troubleshooting — the stages where correctness is won or lost.
+    </p>
+  </section>
+
+  <section class="wrap" id="skills">
+    <div class="eyebrow">Technical skills</div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Core / production</h3>
+        <div class="tags">
+          <span>SQL</span>
+          <span>Relational databases</span>
+          <span>Data &amp; process validation</span>
+          <span>Batch workflows</span>
+          <span>YAML / configuration-driven workflows</span>
+          <span>Troubleshooting &amp; root-cause analysis</span>
+          <span>Datamart &amp; reporting flows</span>
+          <span>Excel</span>
+        </div>
+      </div>
+      <div class="skill-group developing">
+        <h3>Actively developing</h3>
+        <div class="tags">
+          <span>Python</span>
+          <span>Data analysis</span>
+          <span>ETL &amp; data pipelines</span>
+          <span>Data engineering concepts</span>
+          <span>Apache Spark</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Practices &amp; tools</h3>
+        <div class="tags">
+          <span>Spec-driven development</span>
+          <span>Git</span>
+          <span>Practical use of AI tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="ai">
+    <div class="eyebrow">AI Literacy</div>
+    <p class="lede">
+      I use AI tools deliberately as part of how I work and learn — not as an AI/ML
+      engineer, but as a practitioner who gets more done with them.
+    </p>
+    <div class="ai-grid">
+      <div>
+        <h3>Understanding concepts</h3>
+        <p>Breaking down unfamiliar technical topics into clear explanations.</p>
+      </div>
+      <div>
+        <h3>Research</h3>
+        <p>Gathering and comparing approaches before making a decision.</p>
+      </div>
+      <div>
+        <h3>Specifications</h3>
+        <p>Drafting, structuring, and improving specs before implementation.</p>
+      </div>
+      <div>
+        <h3>Problem solving</h3>
+        <p>Working through errors and design questions step by step.</p>
+      </div>
+      <div>
+        <h3>Productivity</h3>
+        <p>Speeding up routine and repetitive tasks.</p>
+      </div>
+      <div>
+        <h3>Learning tech</h3>
+        <p>Getting to a working understanding of new technologies faster.</p>
+      </div>
+    </div>
+    <p class="ai-foot">This site was planned and written with a spec-driven, AI-assisted workflow.</p>
+  </section>
+
+  <section class="wrap" id="projects">
+    <div class="eyebrow">Projects</div>
+    <p class="proj-note">
+      Hands-on learning, kept public. These are practice repositories, not production systems.
+    </p>
+    <div class="projects">
+      <a class="project" href="https://github.com/pandeyso-data/data-analytics-project" target="_blank" rel="noopener">
+        <span class="project-name">data-analytics-project</span>
+        <span class="project-arrow">View on GitHub ↗</span>
+        <span class="project-desc">Practice work in data analysis — querying, exploring, and drawing conclusions from datasets.</span>
+      </a>
+      <a class="project" href="https://github.com/pandeyso-data/my_projects" target="_blank" rel="noopener">
+        <span class="project-name">my_projects</span>
+        <span class="project-arrow">View on GitHub ↗</span>
+        <span class="project-desc">A collection of smaller exercises and experiments across Python, SQL, and data tasks.</span>
+      </a>
+      <a class="project" href="https://github.com/pandeyso-data/apache-spark-learning-notes" target="_blank" rel="noopener">
+        <span class="project-name">apache-spark-learning-notes</span>
+        <span class="project-arrow">View on GitHub ↗</span>
+        <span class="project-desc">Structured notes and examples from learning Apache Spark and distributed data processing.</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap" id="learning">
+    <div class="eyebrow">Continuous learning</div>
+    <p class="lede">My learning is ongoing and structured. Current focus:</p>
+    <ul class="learn">
+      <li><b>Data engineering</b> — concepts, pipeline design, and how data moves at scale.</li>
+      <li><b>Apache Spark</b> — distributed processing fundamentals.</li>
+      <li><b>Python &amp; SQL</b> — deepening both for analysis and data work.</li>
+      <li><b>Analytics</b> — moving from validating data to interpreting it.</li>
+      <li><b>AI literacy</b> — practical, responsible use of modern AI tools.</li>
+      <li><b>Spec-driven development</b> — through the IISc Agentic AI program.</li>
+    </ul>
+  </section>
+
+  <section class="wrap" id="interests">
+    <div class="eyebrow">Career interests</div>
+    <div class="prose">
+      <p>
+        I am looking for roles that connect my enterprise fintech and data-validation
+        background with data analytics and data engineering. I work well on teams that
+        care about data quality, dependable pipelines, and configuration-driven
+        systems — and I want to keep building AI-assisted ways of working.
+      </p>
+      <p>
+        Open to conversations with recruiters and hiring managers exploring that kind of fit.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap" id="contact">
+    <div class="eyebrow">Contact</div>
+    <p class="lede">The quickest ways to reach me.</p>
+    <div class="contact-links">
+      <a href="https://github.com/pandeyso-data" target="_blank" rel="noopener">
+        <span>GitHub</span><span class="c-val">github.com/pandeyso-data</span>
+      </a>
+      <a href="https://www.linkedin.com/in/pandeyso/" target="_blank" rel="noopener">
+        <span>LinkedIn</span><span class="c-val">linkedin.com/in/pandeyso</span>
+      </a>
+      <a href="mailto:sonalpandey937@gmail.com">
+        <span>Email</span><span class="c-val">sonalpandey937@gmail.com</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  Built with a spec-driven approach · hosted on GitHub Pages
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById("themeBtn");
+    var stored = null;
+    try { stored = localStorage.getItem("theme"); } catch (e) {}
+    if (stored === "light" || stored === "dark") root.setAttribute("data-theme", stored);
+
+    function current() {
+      var attr = root.getAttribute("data-theme");
+      if (attr) return attr;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    btn.addEventListener("click", function () {
+      var next = current() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>
