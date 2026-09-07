@@ -21,23 +21,21 @@ python -m http.server 8000
 
 ## Deploy to GitHub Pages
 
-Serve at `https://pandeyso-data.github.io` using a user site repo:
+This folder is already a git repo (branch `main`) with the SSH remote set to
+`git@github.com:pandeyso-data/pandeyso-data.github.io.git`.
 
-```bash
-cd portfolio
-git init
-git add .
-git commit -m "Add personal portfolio"
-git branch -M main
-git remote add origin https://github.com/pandeyso-data/pandeyso-data.github.io.git
-git push -u origin main
-```
+1. Create the repo on GitHub: **New repository → name `pandeyso-data.github.io`**,
+   public, **do not** add a README or .gitignore (keep it empty).
+2. Push:
 
-Then on GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
-branch `main`, folder `/ (root)`. The site is live within a minute or two.
+   ```bash
+   git -C D:/github_project/pandeyso-data.github.io push -u origin main
+   ```
 
-To use a project repo instead (served at `https://pandeyso-data.github.io/<repo>`), push
-to that repo and enable Pages the same way.
+3. On GitHub: **Settings → Pages → Source: Deploy from a branch → `main` / `/ (root)`**.
+
+Live at `https://pandeyso-data.github.io` within a minute or two. Being a
+`<user>.github.io` repo, Pages is often enabled automatically on first push.
 
 ## Updating content
 
