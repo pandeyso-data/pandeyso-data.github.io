@@ -5,6 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sonal Pandey</title>
 <meta name="description" content="Sonal Pandey — Senior Member Technical at Broadridge Financial Solutions. ~7 years in enterprise fintech: batch and database processing, data validation, and reporting flows. Growing into data analytics and data engineering." />
+<meta name="theme-color" content="#0e6f6b" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sonal Pandey — Senior Member Technical, Broadridge Financial Solutions" />
+<meta property="og:description" content="~7 years in enterprise fintech: batch and database processing, data validation, and reporting flows. Growing into data analytics and data engineering." />
+<meta property="og:url" content="https://pandeyso-data.github.io/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sonal Pandey — Senior Member Technical, Broadridge Financial Solutions" />
+<meta name="twitter:description" content="~7 years in enterprise fintech: batch and database processing, data validation, and reporting flows. Growing into data analytics and data engineering." />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sonal Pandey",
+  "jobTitle": "Senior Member Technical",
+  "worksFor": { "@type": "Organization", "name": "Broadridge Financial Solutions" },
+  "url": "https://pandeyso-data.github.io/",
+  "sameAs": [
+    "https://github.com/pandeyso-data",
+    "https://www.linkedin.com/in/pandeyso/"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" />
@@ -337,9 +359,134 @@
     .contact-links a { flex-direction: column; gap: 2px; }
     .contact-links .c-val { text-align: left; }
   }
+
+  /* ---- Scroll progress bar ---- */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--accent); z-index: 60;
+    transition: width .08s linear;
+  }
+
+  /* ---- Active nav link ---- */
+  .nav-links a.active {
+    color: var(--ink); background: var(--surface-2);
+  }
+
+  /* ---- Hero background ---- */
+  .hero { position: relative; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: -20% -10% auto -10%; height: 130%;
+    z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(480px circle at 82% 18%, var(--accent-soft), transparent 62%),
+      radial-gradient(360px circle at 8% 78%, var(--accent-soft), transparent 60%);
+    opacity: .9;
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    from { transform: translate3d(0,0,0) scale(1); }
+    to   { transform: translate3d(-2%, 2%, 0) scale(1.06); }
+  }
+  .hero > * { position: relative; z-index: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg { animation: none; }
+  }
+
+  /* ---- Hero stat strip ---- */
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 32px 44px; margin-top: 44px; }
+  .hero-stat dt {
+    font-family: "IBM Plex Serif", Georgia, serif; font-weight: 600;
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem); color: var(--ink); line-height: 1;
+  }
+  .hero-stat dd {
+    margin: 6px 0 0; font-size: .82rem; color: var(--muted);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+
+  /* ---- Scroll reveal ---- */
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in-view > * { animation: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal.in-view { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Stagger children (skill tags, duties, projects, flow steps) */
+  .flow.reveal-stagger li,
+  .duties.reveal-stagger li,
+  .learn.reveal-stagger li {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .flow.reveal-stagger.in-view li,
+  .duties.reveal-stagger.in-view li,
+  .learn.reveal-stagger.in-view li {
+    opacity: 1; transform: translateY(0);
+  }
+  .flow.reveal-stagger.in-view li:nth-child(1) { transition-delay: .03s; }
+  .flow.reveal-stagger.in-view li:nth-child(2) { transition-delay: .09s; }
+  .flow.reveal-stagger.in-view li:nth-child(3) { transition-delay: .15s; }
+  .flow.reveal-stagger.in-view li:nth-child(4) { transition-delay: .21s; }
+  .flow.reveal-stagger.in-view li:nth-child(5) { transition-delay: .27s; }
+  .flow.reveal-stagger.in-view li:nth-child(6) { transition-delay: .33s; }
+  .flow.reveal-stagger.in-view li:nth-child(7) { transition-delay: .39s; }
+  .flow.reveal-stagger.in-view li:nth-child(8) { transition-delay: .45s; }
+  @media (prefers-reduced-motion: reduce) {
+    .flow.reveal-stagger li, .duties.reveal-stagger li, .learn.reveal-stagger li {
+      opacity: 1; transform: none; transition: none;
+    }
+  }
+
+  /* ---- Flow stage active-on-scroll ---- */
+  .flow li::before { transition: background .3s ease, color .3s ease, border-color .3s ease; }
+  .flow li.active::before { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+  .flow li.active .stage { color: var(--accent); }
+
+  /* ---- Card lift micro-interactions ---- */
+  .projects a.project { transition: background .2s ease, padding-left .2s ease; }
+  .projects a.project:hover { background: var(--surface-2); padding-left: 10px; margin-left: -10px; padding-right: 10px; margin-right: -10px; }
+  .projects a.project:hover .project-arrow { color: var(--accent); }
+  .project-arrow { transition: transform .2s ease, color .2s ease; display: inline-block; }
+  .projects a.project:hover .project-arrow { transform: translateX(3px); }
+
+  .tags span { transition: transform .15s ease, border-color .15s ease, background .15s ease; }
+  .tags span:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+  .ai-grid div { transition: background .2s ease; }
+  .ai-grid div:hover { background: var(--surface-2); }
+
+  /* ---- Copy-to-clipboard ---- */
+  .contact-links a[data-copy] { cursor: pointer; }
+  .copy-toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 12px);
+    background: var(--ink); color: var(--bg);
+    font-size: .85rem; font-family: "IBM Plex Mono", monospace;
+    padding: 10px 16px; border-radius: 8px;
+    opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    z-index: 70;
+  }
+  .copy-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---- Back to top ---- */
+  .to-top {
+    position: fixed; right: 22px; bottom: 22px; z-index: 55;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft);
+    display: grid; place-items: center; cursor: pointer;
+    opacity: 0; transform: translateY(8px); pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease, color .2s ease, border-color .2s ease;
+  }
+  .to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .to-top:hover { color: var(--ink); border-color: var(--muted); }
 </style>
 </head>
 <body>
+
+<div class="progress" id="progressBar"></div>
 
 <header class="nav">
   <div class="nav-inner">
@@ -361,6 +508,7 @@
 <main>
 
   <section class="hero wrap" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
     <p class="hero-eyebrow">Senior Member Technical · Broadridge Financial Solutions</p>
     <h1>Sonal Pandey</h1>
     <p class="hero-statement">
@@ -374,9 +522,14 @@
       <a class="btn" href="https://github.com/pandeyso-data" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/pandeyso/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    <dl class="hero-stats">
+      <div class="hero-stat"><dt data-count="7" data-suffix="+">0</dt><dd>Years in enterprise fintech</dd></div>
+      <div class="hero-stat"><dt data-count="8" data-suffix="">0</dt><dd>Pipeline stages, requirement to reporting</dd></div>
+      <div class="hero-stat"><dt data-count="3" data-suffix="">0</dt><dd>Public learning repositories</dd></div>
+    </dl>
   </section>
 
-  <section class="wrap" id="about">
+  <section class="wrap reveal" id="about">
     <div class="eyebrow">About</div>
     <div class="prose">
       <p>
@@ -413,13 +566,13 @@
     </dl>
   </section>
 
-  <section class="wrap" id="experience">
+  <section class="wrap reveal" id="experience">
     <div class="eyebrow">Experience</div>
     <div class="role-head">
       <h3>Broadridge Financial Solutions</h3>
       <span class="role-meta">Senior Member Technical · ~7 years</span>
     </div>
-    <ul class="duties">
+    <ul class="duties reveal-stagger">
       <li>Implement and configure enterprise fintech workflows, working configuration-first with YAML and parameter-driven setup.</li>
       <li>Run and monitor scheduled batch execution and database-driven processing across environments.</li>
       <li>Validate data and process outcomes at each stage — completeness, consistency, and correctness — before data moves downstream.</li>
@@ -429,10 +582,10 @@
     </ul>
   </section>
 
-  <section class="wrap" id="flow">
+  <section class="wrap reveal" id="flow">
     <div class="eyebrow">How the work flows</div>
     <p class="lede">A plain-English view of the pipeline my work runs across.</p>
-    <ol class="flow">
+    <ol class="flow reveal-stagger">
       <li>
         <div class="stage">Requirement</div>
         <p class="stage-desc">What the business needs, stated clearly.</p>
@@ -472,7 +625,7 @@
     </p>
   </section>
 
-  <section class="wrap" id="skills">
+  <section class="wrap reveal" id="skills">
     <div class="eyebrow">Technical skills</div>
     <div class="skill-groups">
       <div class="skill-group">
@@ -509,7 +662,7 @@
     </div>
   </section>
 
-  <section class="wrap" id="ai">
+  <section class="wrap reveal" id="ai">
     <div class="eyebrow">AI Literacy</div>
     <p class="lede">
       I use AI tools deliberately as part of how I work and learn — not as an AI/ML
@@ -544,7 +697,7 @@
     <p class="ai-foot">This site was planned and written with a spec-driven, AI-assisted workflow.</p>
   </section>
 
-  <section class="wrap" id="projects">
+  <section class="wrap reveal" id="projects">
     <div class="eyebrow">Projects</div>
     <p class="proj-note">
       Hands-on learning, kept public. These are practice repositories, not production systems.
@@ -568,10 +721,10 @@
     </div>
   </section>
 
-  <section class="wrap" id="learning">
+  <section class="wrap reveal" id="learning">
     <div class="eyebrow">Continuous learning</div>
     <p class="lede">My learning is ongoing and structured. Current focus:</p>
-    <ul class="learn">
+    <ul class="learn reveal-stagger">
       <li><b>Data engineering</b> — concepts, pipeline design, and how data moves at scale.</li>
       <li><b>Apache Spark</b> — distributed processing fundamentals.</li>
       <li><b>Python &amp; SQL</b> — deepening both for analysis and data work.</li>
@@ -581,7 +734,7 @@
     </ul>
   </section>
 
-  <section class="wrap" id="interests">
+  <section class="wrap reveal" id="interests">
     <div class="eyebrow">Career interests</div>
     <div class="prose">
       <p>
@@ -596,7 +749,7 @@
     </div>
   </section>
 
-  <section class="wrap" id="contact">
+  <section class="wrap reveal" id="contact">
     <div class="eyebrow">Contact</div>
     <p class="lede">The quickest ways to reach me.</p>
     <div class="contact-links">
@@ -606,17 +759,20 @@
       <a href="https://www.linkedin.com/in/pandeyso/" target="_blank" rel="noopener">
         <span>LinkedIn</span><span class="c-val">linkedin.com/in/pandeyso</span>
       </a>
-      <a href="mailto:sonalpandey937@gmail.com">
-        <span>Email</span><span class="c-val">sonalpandey937@gmail.com</span>
+      <a href="mailto:sonalpandey937@gmail.com" data-copy="sonalpandey937@gmail.com">
+        <span>Email <small style="font-size:.72rem; color: var(--muted); font-weight: 400;">(click to copy)</small></span><span class="c-val">sonalpandey937@gmail.com</span>
       </a>
     </div>
   </section>
 
 </main>
 
-<footer class="wrap">
+<footer class="wrap reveal">
   Built with a spec-driven approach · hosted on GitHub Pages
 </footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+<div class="copy-toast" id="copyToast" role="status" aria-live="polite">Copied to clipboard</div>
 
 <script>
   (function () {
@@ -635,6 +791,146 @@
       var next = current() === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  })();
+
+  // ---- Scroll progress bar ----
+  (function () {
+    var bar = document.getElementById("progressBar");
+    function update() {
+      var h = document.documentElement;
+      var scrolled = h.scrollTop;
+      var height = h.scrollHeight - h.clientHeight;
+      bar.style.width = (height > 0 ? (scrolled / height) * 100 : 0) + "%";
+    }
+    document.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  })();
+
+  // ---- Back to top ----
+  (function () {
+    var toTop = document.getElementById("toTop");
+    function toggle() {
+      toTop.classList.toggle("show", window.scrollY > 480);
+    }
+    document.addEventListener("scroll", toggle, { passive: true });
+    toggle();
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  })();
+
+  // ---- Active nav link on scroll ----
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var sections = Object.keys(map)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove("active"); });
+          link.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    sections.forEach(function (s) { observer.observe(s); });
+  })();
+
+  // ---- Reveal on scroll ----
+  (function () {
+    var els = document.querySelectorAll(".reveal, .reveal-stagger");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("in-view"); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { observer.observe(el); });
+  })();
+
+  // ---- Active pipeline stage on scroll ----
+  (function () {
+    var steps = document.querySelectorAll(".flow li");
+    if (!steps.length || !("IntersectionObserver" in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle("active", entry.isIntersecting);
+      });
+    }, { rootMargin: "-40% 0px -40% 0px", threshold: 0 });
+    steps.forEach(function (s) { observer.observe(s); });
+  })();
+
+  // ---- Animated hero stat counters ----
+  (function () {
+    var stats = document.querySelectorAll(".hero-stat dt[data-count]");
+    if (!stats.length) return;
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function run(el) {
+      var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+      var suffix = el.getAttribute("data-suffix") || "";
+      if (reduced) { el.textContent = target + suffix; return; }
+      var start = null;
+      var duration = 900;
+      function step(ts) {
+        if (start === null) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if (!("IntersectionObserver" in window)) {
+      stats.forEach(run);
+    } else {
+      var observer = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            run(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
+      stats.forEach(function (s) { observer.observe(s); });
+    }
+  })();
+
+  // ---- Copy to clipboard (email) ----
+  (function () {
+    var toast = document.getElementById("copyToast");
+    var timer = null;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(timer);
+      timer = setTimeout(function () { toast.classList.remove("show"); }, 1800);
+    }
+    document.querySelectorAll("[data-copy]").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        var value = el.getAttribute("data-copy");
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          e.preventDefault();
+          navigator.clipboard.writeText(value).then(function () {
+            showToast("Copied " + value);
+          }).catch(function () {
+            /* fall through to mailto */
+            window.location.href = el.getAttribute("href");
+          });
+        }
+      });
     });
   })();
 </script>
